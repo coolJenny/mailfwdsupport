@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   devise_for :users
   # root 'users#index'
 
-  root to: 'homes#index'
+  root 'homes#index'
 end
