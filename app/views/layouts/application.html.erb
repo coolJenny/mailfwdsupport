@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
- <%= favicon_link_tag '/favicon.png', :rel => 'shortcut icon' %>
- <title>Email Forwarding Support</title>
- <%= csrf_meta_tags %>
-
- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
- <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<%= favicon_link_tag '/favicon.png', :rel => 'shortcut icon' %>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Email Forwarding Support</title>
+	<%= csrf_meta_tags %>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-  <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-  <%= yield %>
+	<% if notice %>
+	<p class="alert alert-success"><%= notice %></p>
+	<% end %>
+	<% if alert %>
+	<p class="alert alert-danger"><%= alert %></p>
+	<% end %>
+	<%= yield %>
 </body>
 </html>
