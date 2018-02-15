@@ -1,0 +1,46 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+.panel-heading {
+    padding: 25px 15px !important;
+}
+.panel-heading strong{
+	font-size: 18px;
+}
+
+.panel-footer {
+	padding: 1px 15px;
+	color: #A0A0A0;
+}
+
+.profile-img {
+	width: 96px;
+	height: 96px;
+	margin: 10px auto 20px;
+	display: block;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+.remember-me label{
+	font-weight: normal;
+}
+.login-signup .form-group{
+	margin-bottom: 30px;
+}
+.login-signup a{
+	color: #337ab7;
+	&:hover{
+		color: #023d70;
+		background-color: white;
+	}
+}
+.login-signup em{
+	margin-left: 40px;
+}
+.field_with_errors{
+	display: table-cell;
+	padding: 1px;
+}
+.login-signup li{
+	color: red;
+}

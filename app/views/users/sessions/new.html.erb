@@ -1,26 +1,57 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<% provide(:title, "Log in") %>
+<div class="container login-signup" style="margin-top:40px">
+  <div class="row">
+    <div class="col-sm-6 col-md-5 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <strong>Log in</strong>
+        </div>
+        <div class="panel-body">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <fieldset>
+              <div class="row">
+                <div class="center-block">
+                  <img class="profile-img"
+                  src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                      </span> 
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Type email", class: 'form-control' %>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                      </span>
+                      <%= f.password_field :password, autocomplete: "off", placeholder: 'Type password', class: 'form-control' %>
+                    </div>
+                  </div>
+                  <% if devise_mapping.rememberable? -%>
+                    <div class="form-group">
+                      <div class="input-group remember-me">
+                        <%= f.check_box :remember_me %> &nbsp; <%= f.label :remember_me %>
+                      </div>
+                    </div>
+                  <% end -%>
+                  <div class="form-group">
+                    <%= f.submit "Log in", class: 'btn btn-lg btn-primary btn-block' %>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          <% end %>
+          <div class="text-center">
+            Don't have an account? <%= render "users/shared/links" %>
+          </div>          
+        </div>
+      </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

@@ -1,6 +1,10 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
+  def admin
+    
+  end
+
   # GET /admins
   # GET /admins.json
   def index
