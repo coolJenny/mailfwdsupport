@@ -46,3 +46,25 @@
 .login-signup li{
 	color: red;
 }
+
+.admin .img-responsive{
+	height: 130px;
+	display: inline-flex;
+}
+.admin img{
+	width: 300px;;
+	height: 100%;
+}
+.admin h1{
+	margin-left: 250px;
+}
+.admin .head{
+	display: inline-flex;
+}
+.admin .row{
+	display: inline-grid;
+	width: 100%;
+}
+.admin table{
+	width: 100%;
+}
