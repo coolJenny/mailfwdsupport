@@ -1,13 +1,6 @@
 <div class="container admin">
 	<div class="row">
-		<div class="img-responsive col-md-12">
-			<div class="col-md-6">
-				<img src="/assets/logo-large.jpg" class="">
-			</div>
-			<div class="col-md-6">
-				<h1 class="text-center"></h1>
-			</div>		
-		</div>
+		<%= render('/admins/header') %>
 		<div class="head col-md-12" style="margin-top: 30px;">
 			<div class="col-md-6"><button class="btn btn-primary">Add New Keyword Group</button></div>
 		</div>
@@ -79,8 +72,73 @@
 						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
 						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
 					</tr>
+					<tr>
+						<td>Davis</td>
+						<td>Processed</td>
+						<td></td>
+						<td></td>
+						<td>3</td>
+						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+					</tr>
+					<tr>
+						<td>Davis</td>
+						<td>Laser</td>
+						<td></td>
+						<td></td>
+						<td>3</td>
+						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+					</tr>
+					<tr>
+						<td>Davis</td>
+						<td>Approved</td>
+						<td></td>
+						<td></td>
+						<td>4</td>
+						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+					</tr>
+					<tr>
+						<td>Davis</td>
+						<td>Rejected</td>
+						<td></td>
+						<td></td>
+						<td>2</td>
+						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+					</tr>
+					<tr>
+						<td>Davis</td>
+						<td>Assembly</td>
+						<td>Mailing</td>
+						<td></td>
+						<td>5</td>
+						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+					</tr>
+					<tr>
+						<td>Davis</td>
+						<td>Uploaded</td>
+						<td></td>
+						<td></td>
+						<td>3</td>
+						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>	
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#mydatatable").DataTable({
+			columnDefs: [{
+				targets: 'no-sort',
+				orderable: false,
+				"searchable": false
+			}]
+		});
+	});
+</script>

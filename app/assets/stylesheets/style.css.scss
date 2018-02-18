@@ -64,7 +64,8 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 }
 .deleterow{
 	border: 0 !important;
-	text-align: center;	
+	text-align: center;
+	background-color: white;
 }
 .edit a{
 	background-color: #BAAD64;
@@ -89,4 +90,15 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 }
 #mydatatable_wrapper .row{
 	padding: 5px;
+}
+#mydatatable tbody tr:nth-child(1n){
+	&:hover{
+		background-color: #E5E7E7;
+	}
+}
+#mydatatable tbody tr:nth-child(2n){
+	background-color: #EDEEED;
+	&:hover{
+		background-color: #E5E7E7;
+	}
 }
