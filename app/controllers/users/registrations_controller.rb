@@ -63,6 +63,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
     def after_sign_up_path_for(resource)
+      @name = current_user.name
+      @email = current_user.email
+      @message = "Successfully registered to mailfwdsupport.herokuapp.com!"
+      UserMailer.welcome_email(@name, @email, @message).deliver_now
       dashboard_path
     end
 end
