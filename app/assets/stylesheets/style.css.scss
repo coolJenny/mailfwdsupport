@@ -47,32 +47,46 @@
 	color: red;
 }
 
-.admin .img-responsive{
-	height: 130px;
-	display: inline-flex;
-}
+
 .admin img{
-	width: 300px;;
-	height: 100%;
+	width: 300px;
+	height: 130px;
 }
-.admin h1{
-	margin-left: 250px;
+
+div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:first-child{
+	padding-left: 15px !important;
 }
-.admin .head{
-	display: inline-flex;
+div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:last-child{
+	padding-right: 15px !important;
 }
-.admin .row{
-	display: inline-grid;
-	width: 100%;
+.table-responsive{
+	border: 0 !important;
 }
-.admin table{
-	width: 100%;
+.deleterow{
+	border: 0 !important;
+	text-align: center;	
 }
-.admin .sort{
-	margin-left: 100px;
-	display: inline-flex;
+.edit a{
+	background-color: #BAAD64;
+	&:hover{
+		background-color: #BA9907;
+		text-decoration: none;
+	}
 }
-.admin .sort span{
-	padding: 8px 0;
-	width: 75px;
+.delete a{
+	background-color: #D87285;	
+	&:hover{
+		background-color: #D82F23;
+		text-decoration: none;
+	}
+}
+.edit a, .delete a{
+	padding: 3px 15px;
+	text-align: center;
+	color: black;
+	font-style: italic;
+	max-width: 100%;
+}
+#mydatatable_wrapper .row{
+	padding: 5px;
 }

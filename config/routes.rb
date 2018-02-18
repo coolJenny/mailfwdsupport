@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'contact_us', to: 'home#contact'
   post 'contact_us', to: 'home#create'
-  get 'dashboard', to: 'admins#admin'
+  get 'dashboard', to: 'admins#main_admin'
+  get 'dashboard/edit', to: 'admins#edit_admin'
 end
