@@ -1,48 +1,23 @@
 <% provide(:title, "Home") %>
-<div class="main-content">
-  <form class="form-register" method="post" action="#">
-    <div class="form-register-with-email">
-      <div class="form-white-background">
-        <div class="form-title-row">
-          <h1>Create an account</h1>
-        </div>
-        <div class="form-row">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name">
-          </label>
-        </div>
-        <div class="form-row">
-          <label>
-            <span>Email</span>
-            <input type="email" name="email">
-          </label>
-        </div>
-        <div class="form-row">
-          <label>
-            <span>Password</span>
-            <input type="password" name="password">
-          </label>
-        </div>
-        <div class="form-row">
-          <label class="form-checkbox">
-            <input type="checkbox" name="checkbox" checked>
-            <span>I agree to the <a href="#">terms and conditions</a></span>
-          </label>
-        </div>
-        <div class="form-row">
-          <button type="submit">Register</button>
-        </div>
-      </div>
-      Already have an account? <a href="<%= new_user_session_path %>" class="form-log-in-with-existing"> Login</a>
+<div class="home">
+  <div class="col-md-12" style="padding: 0 0 10px 0;">
+    <div class="col-md-6" style="padding: 0 0 10px 50px;">
+      <h1>Lorem Ipsum Dolor</h1>
+      <p>The ease & </br></br> simplicity of </br></br> Email, available </br></br> across devices</p>
+      <%= link_to "Create an account", new_user_registration_path, :class => 'btn btn-primary create caa' %>
     </div>
-    <div class="form-sign-in-with-social">
-      <div class="form-row form-title-row">
-        <span class="form-title">Sign in with</span>
-      </div>
-      <a href="#" class="form-google-button">Google</a>
-      <a href="#" class="form-facebook-button">Facebook</a>
-      <a href="#" class="form-twitter-button">Twitter</a>
+    <div class="col-md-6" style="padding: 0 0 10px 0;">
+      <img src="/assets/images/iphone-back1.jpg" style="max-width: 100%; max-height: 100%;">
     </div>
-  </form>
+  </div>
+  <div class="col-md-12" style="padding: 10px 0 0 0;">
+    <div class="col-md-6" style="padding: 0;">
+      <img src="/assets/images/iphone-back2.jpg" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div class="col-md-6" style="padding: 0 0 10px 50px;">
+      <h1>Lorem Ipsum Dolor</h1>
+      <p>The ease & </br></br> simplicity of </br></br> Email, available </br></br> across devices</p>
+      <%= link_to "Create an account", new_user_registration_path, :class => 'btn btn-primary create caa' %>
+    </div>
+  </div>
 </div>
