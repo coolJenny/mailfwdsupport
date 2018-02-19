@@ -1,4 +1,3 @@
-@@ -1,24 +0,0 @@
 //= require datatables/jquery.dataTables
 
 // optional change '//' --> '//=' to enable
