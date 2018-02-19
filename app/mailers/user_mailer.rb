@@ -1,12 +1,11 @@
 class UserMailer < ApplicationMailer
 	default from: 'notification@alexanderenterprises.com'
 
-	def welcome_email(name, email, message)
-		@name = name
-		@email = email
+	def welcome_email(user, message)
+		@user = user
 		@message = message
 		@url = 'mailfwdsupport.herokuapp.com'
-		mail(to: @email, subject: @message)
+		mail(to: @user.email, subject: @message)
 
 		# recipients    user.email
 		# from          "My Awesome Site Notifications <notifications@example.com>"
