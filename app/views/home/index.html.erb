@@ -2,7 +2,11 @@
 <div class="container home">
   <%= render('/admins/header') %>
   <div class="col-md-12" style="margin: 150px 100px 200px 100px;">
-    <a href="<%= new_user_registration_path %>" class="btn btn-primary">Create an account</a>
+    <% if user_signed_in? %>
+      <a href="<%= dashboard_path %>" class="btn btn-primary">Go to My Dashboard</a>
+    <% else %>
+      <a href="<%= new_user_registration_path %>" class="btn btn-primary">Create an account</a>
+    <% end %>
   </div>
   <div class="col-md-12">
     <div class="col-md-2">
