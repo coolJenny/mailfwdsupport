@@ -1,23 +1,69 @@
 <% provide(:title, "Home") %>
-<div class="home">
-  <div class="col-md-12" style="padding: 0 0 10px 0;">
-    <div class="col-md-6" style="padding: 0 0 10px 50px;">
-      <h1 style="margin-top: 70px;">Lorem Ipsum Dolor</h1>
-      <p style="padding-left: 40px;">The ease & </br></br> simplicity of </br></br> Email, available </br></br> across devices</p>
-      <%= link_to "Create an account", new_user_registration_path, :class => 'btn btn-primary create caa' %>
-    </div>
-    <div class="col-md-6" style="padding: 0 0 10px 0;">
-      <img src="/assets/images/iphone-back1.jpg" style="max-width: 100%; max-height: 100%;">
-    </div>
+<div class="container home">
+  <%= render('/admins/header') %>
+  <div class="col-md-12" style="margin: 150px 100px 200px 100px;">
+    <a href="<%= new_user_registration_path %>" class="btn btn-primary">Create an account</a>
   </div>
-  <div class="col-md-12" style="padding: 10px 0 0 0;">
-    <div class="col-md-6" style="padding: 0;">
-      <img src="/assets/images/iphone-back2.jpg" style="max-width: 100%; max-height: 100%;">
+  <div class="col-md-12">
+    <div class="col-md-2">
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg">
+          <img src="/assets/images/1.jpg" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p>SECURE FILE UPLOADING</p>
+          </div>
+        </a>
+      </div>
     </div>
-    <div class="col-md-6" style="padding: 0 0 10px 50px;">
-      <h1 style="margin-top: 70px;">Lorem Ipsum Dolor</h1>
-      <p style="padding-left: 40px;">The ease & </br></br> simplicity of </br></br> Email, available </br></br> across devices</p>
-      <%= link_to "Create an account", new_user_registration_path, :class => 'btn btn-primary create caa' %>
+    <div class="col-md-2">
+      <div class="thumbnail">
+        <a href="/w3images/nature.jpg">
+          <img src="/assets/images/2.jpg" alt="Nature" style="width:100%">
+          <div class="caption">
+            <p>FULL COLOR PRINTING</p>
+          </div>
+        </a>
+      </div>
     </div>
-  </div>
+    <div class="col-md-2">
+      <div class="thumbnail">
+        <a href="/w3images/fjords.jpg">
+          <img src="/assets/images/3.jpg" alt="Fjords" style="width:100%">
+          <div class="caption">
+            <p>MAIL PROCESSING</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg">
+          <img src="/assets/images/4.jpg" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p>AGENT ACCESS</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="thumbnail">
+        <a href="/w3images/nature.jpg">
+          <img src="/assets/images/5.jpg" alt="Nature" style="width:100%">
+          <div class="caption">
+            <p>E-BILL</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="thumbnail">
+        <a href="/w3images/fjords.jpg">
+          <img src="/assets/images/6.jpg" alt="Fjords" style="width:100%">
+          <div class="caption">
+            <p>CERTIFIED READ</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>  
 </div>
