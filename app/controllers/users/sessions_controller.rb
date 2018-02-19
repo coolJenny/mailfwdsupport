@@ -28,9 +28,9 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
     def after_sign_in_path_for(resource)
-      @user = current_user
-      @message = "Successfully signed in to mailfwdsupport.com!"
-      UserMailer.welcome_email(@user, @message).deliver_now
+      # @user = current_user
+      # @message = "Successfully signed in to mailfwdsupport.com!"
+      # UserMailer.welcome_email(@user, @message).deliver_now
       dashboard_path
     end
 end
