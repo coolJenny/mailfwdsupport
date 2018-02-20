@@ -150,3 +150,15 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 .home .thumbnail{
 	border: 0;
 }
+
+.add{
+	background-color: #C4C6C6 !important; 
+	color: #4E4F4F !important;
+	&:hover{
+		background-color: #B8B9B9 !important;
+		color: #1F2020 !important;
+	}
+}
+.add em{
+	font-weight: bolder !important;
+}
