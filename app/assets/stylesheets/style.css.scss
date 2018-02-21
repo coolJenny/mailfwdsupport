@@ -151,7 +151,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 	border: 0;
 }
 
-.add{
+.add, .add-tag-btn{
 	background-color: #C4C6C6 !important; 
 	color: #4E4F4F !important;
 	&:hover{
@@ -161,4 +161,11 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 }
 .add em{
 	font-weight: bolder !important;
+}
+
+.clickable{
+    cursor: pointer;   
+}
+.keyword-span{
+	margin: 2px;
 }
