@@ -2,11 +2,12 @@ class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
   def main_admin
-    
+    @users = User.all
+    @keywords = Admin.where('user_id' => current_user.id)
   end
 
   def edit_admin
-    
+    @keywords = Admin.where('user_id' => current_user.id)
   end
 
   # GET /admins
@@ -18,6 +19,7 @@ class AdminsController < ApplicationController
   # GET /admins/1
   # GET /admins/1.json
   def show
+    @admin_keywords = Admin.where('user_id' => current_user.id)
   end
 
   # GET /admins/new

@@ -127,6 +127,9 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 		background-color: #2e6da4;
 	}
 }
+.admin table tr td{
+	border-top: 0 !important;
+}
 
 .home .img-responsive img{
 	width: 300px;

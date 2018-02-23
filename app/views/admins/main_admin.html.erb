@@ -18,114 +18,17 @@
 					</tr>					
 				</thead>
 				<tbody>
-					<tr>
-						<td>California</td>
-						<td>Processed</td>
-						<td></td>
-						<td></td>
-						<td>3</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>California</td>
-						<td>Laser</td>
-						<td></td>
-						<td></td>
-						<td>3</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>California</td>
-						<td>Approved</td>
-						<td></td>
-						<td></td>
-						<td>4</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>California</td>
-						<td>Rejected</td>
-						<td></td>
-						<td></td>
-						<td>2</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>California</td>
-						<td>Assembly</td>
-						<td>Mailing</td>
-						<td></td>
-						<td>5</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>California</td>
-						<td>Uploaded</td>
-						<td></td>
-						<td></td>
-						<td>3</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>Davis</td>
-						<td>Processed</td>
-						<td></td>
-						<td></td>
-						<td>3</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>Davis</td>
-						<td>Laser</td>
-						<td></td>
-						<td></td>
-						<td>3</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>Davis</td>
-						<td>Approved</td>
-						<td></td>
-						<td></td>
-						<td>4</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>Davis</td>
-						<td>Rejected</td>
-						<td></td>
-						<td></td>
-						<td>2</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>Davis</td>
-						<td>Assembly</td>
-						<td>Mailing</td>
-						<td></td>
-						<td>5</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
-					<tr>
-						<td>Davis</td>
-						<td>Uploaded</td>
-						<td></td>
-						<td></td>
-						<td>3</td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-					</tr>
+					<% @keywords.each do |keyword| %>
+						<tr>
+							<td><%= keyword.Keyword1 %></td>
+							<td><%= keyword.Keyword2 %></td>
+							<td><%= keyword.Keyword3 %></td>
+							<td><%= keyword.Keyword4 %></td>
+							<td></td>
+							<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+							<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+						</tr>
+					<% end %>
 				</tbody>
 			</table>
 		</div>

@@ -12,11 +12,6 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.add-tag').hide();
-	$('.add-tag-btn').click(function(e){
-		$('.add-tag').show();
-	});
-
 	$('.add-keyword').click(function() {
 		var keyword_val = $('.keyword_val').val();
 		if(keyword_val){

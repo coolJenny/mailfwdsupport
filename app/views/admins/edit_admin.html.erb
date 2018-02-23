@@ -9,9 +9,9 @@
 				<div class="col-md-12 panel-heading" style="border-bottom: 1px solid #CACBCA">
 					<div class="form-inline col-md-6 keywords" style="margin: 10px 0">
 						<label style="padding: 0">Keywords:</label>
-						<span class="btn btn-primary keyword-span">califonia</span>
-						<span class="btn btn-primary keyword-span">assembly</span>
-						<span class="btn btn-primary keyword-span">mailing</span>
+						<% @keywords.each do |keyword|  %>
+							<span class="btn btn-primary keyword-span"><%= keyword %></span>
+						<% end %>
 					</div>
 					<div class="form-inline col-md-6 add-tag" style="margin: 10px 0;">
 						<label class="col-md-3" style="padding: 0">Add/Edit Keyword</label>
@@ -31,13 +31,7 @@
 							</tr>					
 						</thead>
 						<tbody>
-							<tr>
-								<td>Tim AE</td>
-								<td>ta@alexent.com</td>
-								<td><input type="checkbox" name=""></td>
-								<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-								<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-							</tr>
+							
 							<tr>
 								<td>Alanna</td>
 								<td>aalex@alexander-co.com</td>
