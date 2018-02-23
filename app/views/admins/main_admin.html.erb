@@ -20,11 +20,11 @@
 				<tbody>
 					<% @keywords.each do |keyword| %>
 						<tr>
-							<td><%= keyword.Keyword1 %></td>
-							<td><%= keyword.Keyword2 %></td>
-							<td><%= keyword.Keyword3 %></td>
-							<td><%= keyword.Keyword4 %></td>
-							<td></td>
+							<td><%= keyword.keyword1 %></td>
+							<td><%= keyword.keyword2 %></td>
+							<td><%= keyword.keyword3 %></td>
+							<td><%= keyword.keyword4 %></td>
+							<td><%= @num_recipients %></td>
 							<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
 							<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
 						</tr>

@@ -10,7 +10,18 @@
 					<div class="form-inline col-md-6 keywords" style="margin: 10px 0">
 						<label style="padding: 0">Keywords:</label>
 						<% @keywords.each do |keyword|  %>
-							<span class="btn btn-primary keyword-span"><%= keyword %></span>
+						<% if !keyword.keyword1.empty? %>
+						<span class="btn btn-primary keyword-span"><%= keyword.keyword1 %></span>
+						<% end %>
+						<% if !keyword.keyword2.empty? %>
+						<span class="btn btn-primary keyword-span"><%= keyword.keyword2 %></span>
+						<% end %>
+						<% if !keyword.keyword3.empty? %>
+						<span class="btn btn-primary keyword-span"><%= keyword.keyword3 %></span>
+						<% end %>
+						<% if !keyword.keyword4.empty? %>
+						<span class="btn btn-primary keyword-span"><%= keyword.keyword4 %></span>
+						<% end %>
 						<% end %>
 					</div>
 					<div class="form-inline col-md-6 add-tag" style="margin: 10px 0;">
@@ -20,63 +31,61 @@
 					</div>					
 				</div>
 				<div class="body table-responsive col-md-12 panel-body">
-					<table class="table table-hover table-striped" id="mydatatable">
+					<table class="table table-hover table-striped greeting-table" id="mydatatable">
 						<thead>
 							<tr>
 								<th>Greatings</th>
 								<th>Email</th>
 								<th>Inc. CC</th>
-								<th class="text-center">Action</th>
-								<th></th>
+								<th class="text-center" colspan="2">Action</th>
 							</tr>					
 						</thead>
 						<tbody>
-							
-							<tr>
-								<td>Alanna</td>
-								<td>aalex@alexander-co.com</td>
-								<td><input type="checkbox" name=""></td>
-								<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-								<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-							</tr>
-							<tr>
-								<td>Tom</td>
-								<td>citymgr@califoniaciry.com</td>
-								<td><input type="checkbox" name=""></td>
-								<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-								<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-							</tr>
-							<tr>
-								<td>California</td>
-								<td>Rejected</td>
-								<td><input type="checkbox" name=""></td>
-								<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-								<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-							</tr>
-							<tr>
-								<td>Ruby</td>
-								<td>findir@califoniacity.com</td>
-								<td><input type="checkbox" name=""></td>
-								<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-								<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-							</tr>
-							<tr>
-								<td>Tim ACS</td>
-								<td>ta@acsbill.com</td>
-								<td><input type="checkbox" name=""></td>
-								<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-								<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-							</tr>
-							<tr>
-								<td>Dawn</td>
-								<td>DFerguson@califoniacity-ca.gov</td>
-								<td><input type="checkbox" name=""></td>
-								<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-								<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
-							</tr>
+							<% @greetings.each do |greeting| %>
+								<tr>
+									<td><%= greeting.name %></td>
+									<td><%= greeting.email %></td>
+									<td><input type="checkbox" name="" <% if !greeting.cc_state.nil? %> checked <% end %> ></td>
+									<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+									<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+								</tr>
+							<% end %>
 						</tbody>
 					</table>
-					<span class="btn col-md-12 col-sm-12 col-xs-12 add-tag-btn">Add <em>+</em></span>
+					<span class="btn col-md-12 col-sm-12 col-xs-12 add-recipients" data-toggle="modal" data-target="#myModal">Add Recipients <em>+</em></span>
+					<div id="myModal" class="modal fade" role="dialog" data-backdrop="static">
+						<div class="modal-dialog">
+							<%= form_for @admin do |f| %>
+								<%= hidden_field_tag 'action_info' ,'recipient' %>
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Recipient Information</h4>
+									</div>
+									<div class="modal-body">
+										<div class="form-group">
+											<label>Name</label><em>*</em>
+											<input type="text" name="name" class="form-control name" autofocus="true", required="true">
+											
+										</div>
+										<div class="form-group">
+											<label>Email</label><em>*</em>
+											<input type="email" name="email" class="form-control email", required="true">
+											
+										</div>
+										<div class="form-inline">
+											<input type="checkbox" name="cc_state" class="cc_state" value=""> &nbsp;
+											
+											<label>Inc. CC</label>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<%= f.submit 'Save', class: 'btn btn-default create-recipient' %>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
 				</div>
 				<div class="col-md-12 text-center clickable" style="background-color: #ECEDEC"><span class=""><i class="glyphicon glyphicon-chevron-up"></i></span></div>
 			</div>

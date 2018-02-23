@@ -1,13 +1,23 @@
+require 'net/http'
+require 'net/ftp'
+require 'uri'
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
   def main_admin
     @users = User.all
-    @keywords = Admin.where('user_id' => current_user.id)
+    @keywords = Keyword.where('user_id' => current_user.id)
+    @num_recipients = Greeting.where('user_id' => current_user.id).count
   end
 
   def edit_admin
-    @keywords = Admin.where('user_id' => current_user.id)
+    @keywords = Keyword.where('user_id' => current_user.id)
+    @greetings = Greeting.where('user_id' => current_user.id)
+    @admin = Admin.new
+  end
+
+  def recipients
+    
   end
 
   # GET /admins
@@ -34,17 +44,31 @@ class AdminsController < ApplicationController
   # POST /admins
   # POST /admins.json
   def create
-    @admin = Admin.new(admin_params)
-
-    respond_to do |format|
-      if @admin.save
-        format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
-        format.json { render :show, status: :created, location: @admin }
+    if params[:action_info] == 'recipient'      
+      @recipient = Greeting.new(admin_params)
+      @recipient.name = params[:name]
+      @recipient.email = params[:email]
+      @recipient.cc_state = params[:cc_state]
+      @recipient.user_id = current_user.id
+      if @recipient.save
+        flash[:notice] = "Recipient was successfully created!"
+        redirect_to 'dashboard/edit'
       else
-        format.html { render :new }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
+        flash[:error] = "Failed creating recipient."
+        redirect_to :back
       end
     end
+    # @admin = Admin.new(admin_params)
+
+    # respond_to do |format|
+    #   if @admin.save
+    #     format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
+    #     format.json { render :show, status: :created, location: @admin }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @admin.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /admins/1

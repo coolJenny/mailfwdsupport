@@ -22,5 +22,22 @@ $(document).ready(function() {
 			alert("Please type your Keyword!");			
 		}
 	});
+
+	// $('.create-recipient').click(function(){
+	// 	var name = $('#myModal .name').val();
+	// 	var email = $('#myModal .email').val();
+	// 	var cc_state = $('#myModal .cc_state').val();
+	// 	if(name == ''){
+	// 		alert("Please insert recipient's name");
+	// 		$('#myModal .name').css('border-color', 'red');
+	// 	}else if(email == ''){
+	// 		alert("Please insert recipient's email");
+	// 		$('#myModal .email').css('border-color', 'red');
+	// 	}else if(name == '' && email == ''){
+	// 		alert("Please insert recipient's name and email");
+	// 		$('#myModal .name').css('border-color', 'red');
+	// 		$('#myModal .email').css('border-color', 'red');
+	// 	}
+	// });
 	
 });

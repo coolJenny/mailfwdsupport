@@ -154,7 +154,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 	border: 0;
 }
 
-.add, .add-tag-btn{
+.add, .add-recipients{
 	background-color: #C4C6C6 !important; 
 	color: #4E4F4F !important;
 	&:hover{
@@ -171,4 +171,7 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 }
 .keyword-span{
 	margin: 2px;
+}
+.greeting-table tbody{
+	margin: 5px 0 !important;
 }
