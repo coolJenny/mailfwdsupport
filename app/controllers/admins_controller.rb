@@ -1,7 +1,7 @@
 require 'net/http'
 require 'net/ftp'
 require 'uri'
-class AdminsController < ApplicationController
+class AdminsController < ApplicationController  
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
   def main_admin
@@ -12,6 +12,7 @@ class AdminsController < ApplicationController
 
   def edit_admin
     @keywords = Keyword.where('user_id' => current_user.id)
+    @keywords_num = Keyword.where('user_id' => current_user.id).count
     @greetings = Greeting.where('user_id' => current_user.id)
     @admin = Admin.new
   end
@@ -52,10 +53,35 @@ class AdminsController < ApplicationController
       @recipient.user_id = current_user.id
       if @recipient.save
         flash[:notice] = "Recipient was successfully created!"
-        redirect_to 'dashboard/edit'
+        redirect_back(fallback_location: root_path)
       else
         flash[:error] = "Failed creating recipient."
-        redirect_to :back
+        redirect_back(fallback_location: root_path)
+      end
+    end
+
+    if params[:action_info] == 'keyword'
+      @keyword = Keyword.update(admin_params)
+      @key_count = Keyword.where('user_id' => current_user.id).count
+      if @key_count == 1
+        @keyword.keyword2 = params[:keyword_val]
+      elsif @key_count == 2
+        @keyword.keyword3 = params[:keyword_val]
+      elsif @key_count == 3
+        @keyword.keyword4 = params[:keyword_val]
+      elsif @key_count == 4
+        flash[:error] = "Limited keyword. You can't create keyword anymore."
+        redirect_back(fallback_location: root_path)
+      else
+        @keyword.keyword1 = params[:keyword_val]
+      end        
+        
+      if @keyword.save
+        flash[:notice] = "Keyword was successfully created!"
+        redirect_back(fallback_location: root_path)
+      else
+        flash[:error] = "Failed creating keyword."
+        redirect_back(fallback_location: root_path)
       end
     end
     # @admin = Admin.new(admin_params)

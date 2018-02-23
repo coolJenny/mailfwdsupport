@@ -12,16 +12,16 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.add-keyword').click(function() {
-		var keyword_val = $('.keyword_val').val();
-		if(keyword_val){
-			$('.keyword_val').css({"border":""});
-			$('.keywords').append('<span class="btn btn-primary keyword-span ' + 'keyword-' + keyword_val + '">' + keyword_val + '</span>');
-		}else{
-			$('.keyword_val').css({"border":"1px solid red"});
-			alert("Please type your Keyword!");			
-		}
-	});
+	// $('.add-keyword').click(function() {
+	// 	var keyword_val = $('.keyword_val').val();
+	// 	if(keyword_val){
+	// 		$('.keyword_val').css({"border":""});
+	// 		$('.keywords').append('<span class="btn btn-primary keyword-span ' + 'keyword-' + keyword_val + '">' + keyword_val + '</span>');
+	// 	}else{
+	// 		$('.keyword_val').css({"border":"1px solid red"});
+	// 		alert("Please type your Keyword!");			
+	// 	}
+	// });
 
 	// $('.create-recipient').click(function(){
 	// 	var name = $('#myModal .name').val();
