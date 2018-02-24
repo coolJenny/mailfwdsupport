@@ -62,19 +62,23 @@ class AdminsController < ApplicationController
 
     if params[:action_info] == 'keyword'
       @keyword = Keyword.new(admin_params)
-      @key_count = Keyword.where('user_id' => current_user.id).count
-      if @key_count == 1
-        @keyword.keyword2 = params[:keyword_val]
-      elsif @key_count == 2
-        @keyword.keyword3 = params[:keyword_val]
-      elsif @key_count == 3
-        @keyword.keyword4 = params[:keyword_val]
-      elsif @key_count == 4
-        flash[:error] = "Limited keyword. You can't create keyword anymore."
-        redirect_back(fallback_location: root_path)
+      if Keyword.where('user_id' => current_user.id)
+        @key_count = Keyword.where('user_id' => current_user.id).count
+        if @key_count == 1
+          @keyword.keyword2 = params[:keyword_val]
+        elsif @key_count == 2
+          @keyword.keyword3 = params[:keyword_val]
+        elsif @key_count == 3
+          @keyword.keyword4 = params[:keyword_val]
+        elsif @key_count == 4
+          flash[:error] = "Limited keyword. You can't create keyword anymore."
+          redirect_back(fallback_location: root_path)
+        else
+          @keyword.keyword1 = params[:keyword_val]
+        end
       else
         @keyword.keyword1 = params[:keyword_val]
-      end        
+      end       
         
       if @keyword.save
         flash[:notice] = "Keyword was successfully created!"
