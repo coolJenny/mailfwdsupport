@@ -29,7 +29,7 @@
 							<%= form_for @admin do |f| %>
 								<%= hidden_field_tag 'action_info' ,'keyword' %>
 								<label class="col-md-3" style="padding: 0">Add/Edit Keyword</label>
-								<input type="text" name="keyword_val" class="form-control keyword_val" autofocus="true" placeholder="type your keyword...">
+								<input type="text" name="keyword_val" class="form-control keyword_val" autofocus="true" placeholder="type your keyword..." required="true">
 								<%= f.submit 'OK', class: 'btn btn-default add-keyword' %>
 							<% end %>
 						</div>

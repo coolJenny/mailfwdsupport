@@ -61,7 +61,7 @@ class AdminsController < ApplicationController
     end
 
     if params[:action_info] == 'keyword'
-      @keyword = Keyword.update(admin_params)
+      @keyword = Keyword.new(admin_params)
       @key_count = Keyword.where('user_id' => current_user.id).count
       if @key_count == 1
         @keyword.keyword2 = params[:keyword_val]
