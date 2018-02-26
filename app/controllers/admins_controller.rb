@@ -78,7 +78,8 @@ class AdminsController < ApplicationController
         end
       else
         @keyword.keyword1 = params[:keyword_val]
-      end       
+      end
+      @keyword.user_id = current_user.id
         
       if @keyword.save
         flash[:notice] = "Keyword was successfully created!"

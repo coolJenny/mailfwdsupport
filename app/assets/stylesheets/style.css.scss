@@ -178,3 +178,10 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
 .add-keyword{
 	margin: 3px;
 }
+
+.margin{
+	background-color: white !important;
+	&:hover{
+		background-color: white !important;
+	}
+}
