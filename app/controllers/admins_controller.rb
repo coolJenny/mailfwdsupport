@@ -50,13 +50,14 @@ class AdminsController < ApplicationController
   # POST /admins.json
   def create
     if params[:action_info] == 'recipient'
-      @recipient = Greeting.new(admin_params)
-      @recipient.name = params[:name]
-      @recipient.email = params[:email]
-      @recipient.cc_state = params[:cc_state]
-      @recipient.user_id = current_user.id
-      if @recipient.save
-        @recipient.keywordgroups << @recipient
+      @greeting = Greeting.new(admin_params)
+      @greeting.name = params[:name]
+      @greeting.email = params[:email]
+      @greeting.cc_state = params[:cc_state]
+      @greeting.user_id = current_user.id
+      if @greeting.save
+        keywordgroup = Keywordgroup.find_or_create_by(greeting_id: @greeting.id)
+        @greeting.keywordgroups << keywordgroup
         flash[:notice] = "Recipient was successfully created!"
         redirect_back(fallback_location: root_path)
       else
