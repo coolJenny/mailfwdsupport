@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180223025738) do
+ActiveRecord::Schema.define(version: 20180227034436) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20180223025738) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "keywordgroups", force: :cascade do |t|
+    t.integer "keywords_id"
+    t.integer "recipient_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "keywords", force: :cascade do |t|
     t.string "keyword1"
     t.string "keyword2"
@@ -45,6 +53,7 @@ ActiveRecord::Schema.define(version: 20180223025738) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "recipient_id"
+    t.integer "keywordgroup_id"
   end
 
   create_table "users", force: :cascade do |t|

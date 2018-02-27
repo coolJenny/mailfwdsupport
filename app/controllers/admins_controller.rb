@@ -5,12 +5,16 @@ class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
   def main_admin
-    @users = User.all
     @keywords = Keyword.where('user_id' => current_user.id)
     @num_recipients = Greeting.where('user_id' => current_user.id).count
   end
 
   def edit_admin
+    @keywordgroups = Keywordgroup.where('user_id' => current_user.id)    
+    if !@keywordgroups.nil?
+
+    end
+
     @keywords = Keyword.where('user_id' => current_user.id)
     @keywords_num = Keyword.where('user_id' => current_user.id).count
     @greetings = Greeting.where('user_id' => current_user.id)
@@ -45,13 +49,14 @@ class AdminsController < ApplicationController
   # POST /admins
   # POST /admins.json
   def create
-    if params[:action_info] == 'recipient'      
+    if params[:action_info] == 'recipient'
       @recipient = Greeting.new(admin_params)
       @recipient.name = params[:name]
       @recipient.email = params[:email]
       @recipient.cc_state = params[:cc_state]
       @recipient.user_id = current_user.id
       if @recipient.save
+        @recipient.keywordgroups << @recipient
         flash[:notice] = "Recipient was successfully created!"
         redirect_back(fallback_location: root_path)
       else
@@ -82,6 +87,7 @@ class AdminsController < ApplicationController
       @keyword.user_id = current_user.id
         
       if @keyword.save
+        @keyword.keywordgroups << @keyword
         flash[:notice] = "Keyword was successfully created!"
         redirect_back(fallback_location: root_path)
       else
