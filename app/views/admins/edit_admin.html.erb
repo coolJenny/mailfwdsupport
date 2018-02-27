@@ -39,6 +39,7 @@
 					<table class="table table-hover table-striped greeting-table" id="mydatatable">
 						<thead>
 							<tr>
+								<th>No</th>
 								<th>Greatings</th>
 								<th>Email</th>
 								<th>Inc. CC</th>
@@ -47,8 +48,9 @@
 						</thead>
 						<tbody>
 							<tr class="margin"><td></td></tr>
-							<% @greetings.each do |greeting| %>
+							<% @greetings.each_with_index do |greeting, index| %>
 								<tr>
+									<td><%= index+1 %></td>
 									<td><%= greeting.name %></td>
 									<td><%= greeting.email %></td>
 									<td><input type="checkbox" name="" <% if !greeting.cc_state.nil? %> checked <% end %> ></td>

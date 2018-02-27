@@ -88,7 +88,8 @@ class AdminsController < ApplicationController
       @keyword.user_id = current_user.id
         
       if @keyword.save
-        @keyword.keywordgroups << @keyword
+        keywordgroup = Keywordgroup.find_or_create_by(keyword_id: @keyword.id)
+        @keyword.keywordgroups << keywordgroup
         flash[:notice] = "Keyword was successfully created!"
         redirect_back(fallback_location: root_path)
       else
