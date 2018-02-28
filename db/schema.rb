@@ -10,16 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228103522) do
+ActiveRecord::Schema.define(version: 20180228115811) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "keyword1"
-    t.string "keyword2"
-    t.string "keyword3"
-    t.string "keyword4"
-    t.integer "user_id"
   end
 
   create_table "greetings", force: :cascade do |t|
@@ -27,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180228103522) do
     t.string "email"
     t.boolean "cc_state"
     t.integer "user_id"
+    t.integer "keywordgroup_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,23 +33,22 @@ ActiveRecord::Schema.define(version: 20180228103522) do
   end
 
   create_table "keywordgroups", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "keyword_id"
     t.integer "greeting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["greeting_id"], name: "index_keywordgroups_on_greeting_id"
     t.index ["keyword_id"], name: "index_keywordgroups_on_keyword_id"
     t.index ["user_id"], name: "index_keywordgroups_on_user_id"
   end
 
   create_table "keywords", force: :cascade do |t|
+    t.string "keyword"
+    t.integer "user_id"
+    t.integer "keywordgroup_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "recipient_id"
-    t.integer "keywordgroup_id"
-    t.string "keyword"
   end
 
   create_table "users", force: :cascade do |t|
