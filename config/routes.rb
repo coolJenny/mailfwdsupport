@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :keywordlists
   resources :admins
   resources :homes
   devise_for :users, controllers: {

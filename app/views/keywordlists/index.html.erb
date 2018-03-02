@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Keywordlists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Keyword</th>
+      <th>Greeting</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @keywordlists.each do |keywordlist| %>
+      <tr>
+        <td><%= keywordlist.user_id %></td>
+        <td><%= keywordlist.keyword_id %></td>
+        <td><%= keywordlist.greeting_id %></td>
+        <td><%= link_to 'Show', keywordlist %></td>
+        <td><%= link_to 'Edit', edit_keywordlist_path(keywordlist) %></td>
+        <td><%= link_to 'Destroy', keywordlist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Keywordlist', new_keywordlist_path %>

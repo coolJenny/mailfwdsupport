@@ -21,6 +21,10 @@ class AdminsController < ApplicationController
     
   end
 
+  def edit_keywordgroup
+    
+  end
+
   # GET /admins
   # GET /admins.json
   def index
@@ -52,8 +56,11 @@ class AdminsController < ApplicationController
       @greeting.cc_state    = params[:cc_state]
       @greeting.user_id     = current_user.id
       if @greeting.save
-        keywordgroup = Keywordgroup.find_or_create_by(greeting_id: @greeting.id)
+        @keywordgroup = @greeting.keywordgroup.create!(user_id: current_user.id )
+        
+        # keywordgroup = Keywordgroup.find_or_create_by(greeting_id: @greeting.id)
         # @greeting.keywordgroups << keywordgroup
+
         flash[:notice] = "Recipient was successfully created!"
         redirect_back(fallback_location: root_path)
       else
@@ -64,6 +71,7 @@ class AdminsController < ApplicationController
 
     if params[:action_info] == 'keyword'
       @keyword = Keyword.new(admin_params)
+      @keywordgroup.keywords << @keyword
       key_count = Keyword.where('user_id' => current_user.id).where('keywordgroup_id' => keywordgroup_id).count
       if key_count == 4
         flash[:error] = "Can't create a new keyword. Limited the number of keywords."

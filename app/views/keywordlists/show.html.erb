@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @keywordlist.user_id %>
+</p>
+
+<p>
+  <strong>Keyword:</strong>
+  <%= @keywordlist.keyword_id %>
+</p>
+
+<p>
+  <strong>Greeting:</strong>
+  <%= @keywordlist.greeting_id %>
+</p>
+
+<%= link_to 'Edit', edit_keywordlist_path(@keywordlist) %> |
+<%= link_to 'Back', keywordlists_path %>
