@@ -1,4 +1,4 @@
 class Keyword < ApplicationRecord
-	has_many :keywordgroups
+	belongs_to :keywordgroup
 	belongs_to :user
 end

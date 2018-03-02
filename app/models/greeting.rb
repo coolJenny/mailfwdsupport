@@ -1,5 +1,5 @@
 class Greeting < ApplicationRecord
-	has_many :keywordgroups
+	belongs_to :keywordgroup, required: false
 	belongs_to :user
 
 	validates :name, presence: true

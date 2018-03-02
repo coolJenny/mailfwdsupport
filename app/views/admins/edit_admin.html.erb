@@ -10,18 +10,7 @@
 					<div class="form-inline col-md-6 keywords" style="margin: 10px 0">
 						<label style="padding: 0">Keywords:</label>
 						<% @keywords.each do |keyword|  %>
-							<% if !keyword.keyword1.nil? %>
-								<span class="btn btn-primary keyword-span"><%= keyword.keyword1 %></span>
-							<% end %>
-							<% if !keyword.keyword2.nil? %>
-								<span class="btn btn-primary keyword-span"><%= keyword.keyword2 %></span>
-							<% end %>
-							<% if !keyword.keyword3.nil? %>
-								<span class="btn btn-primary keyword-span"><%= keyword.keyword3 %></span>
-							<% end %>
-							<% if !keyword.keyword4.nil? %>
-								<span class="btn btn-primary keyword-span"><%= keyword.keyword4 %></span>
-							<% end %>
+							<span class="btn btn-primary keyword-span"><%= keyword.keyword4 %></span>
 						<% end %>
 					</div>
 					<% if @keywords_num != 4 %>

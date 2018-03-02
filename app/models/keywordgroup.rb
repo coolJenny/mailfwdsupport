@@ -1,5 +1,5 @@
 class Keywordgroup < ApplicationRecord
-	belongs_to :keyword
-	belongs_to :greeting
+	has_many :keywords
+	has_many :greetings
 	belongs_to :user
 end
