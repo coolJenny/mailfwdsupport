@@ -9,11 +9,20 @@ class AdminsController < ApplicationController
   end
 
   def edit_admin
+
     @keywordgroup = Keywordgroup.create!(user_id: current_user.id)
-    @keywords = Keyword.where(keywordgroup_id: @keywordgroup.id).where(user_id: current_user.id)
-    @keywords_num = @keywords.count
-    @greetings = Greeting.where(keywordgroup_id: @keywordgroup.id).where(user_id: current_user.id)
+    @group_id = @keywordgroup.id
+
+    if @keywordgroups = Keywordgroup.where(user_id: current_user.id)
+      @keywordgroups.each do |keywordgroup|
+        @keywords = Keyword.where(keywordgroup_id: keywordgroup.id).where(user_id: current_user.id)
+        @keywords_num = @keywords.count
+        @greetings = Greeting.where(keywordgroup_id: keywordgroup.id).where(user_id: current_user.id)
+      end     
+    end
+    
     @admin = Admin.new
+    
   end
 
   # GET /admins
@@ -45,10 +54,29 @@ class AdminsController < ApplicationController
   # POST /admins
   # POST /admins.json
   def create
+    if params[:action_info] == 'keyword'
+      @keyword = Keyword.new(admin_params)
+      @keyword.keyword = params[:keyword_val]
+      @keyword.user_id = current_user.id
+      @keyword.keywordgroup_id = params[:group_id]
+      
+      if @keyword.save
+        flash[:notice] = "Keyword was successfully created!"
+        redirect_back(fallback_location: root_path)
+      else
+        flash[:error] = "Failed creating keyword."
+        redirect_back(fallback_location: root_path)
+      end
+    end
+
     if params[:action_info] == 'recipient'
       @greeting = Greeting.new(admin_params)
-      @greeting.keywordgroup_id = @keywordgroup.id
+      @greeting.name = params[:name]
+      @greeting.email = params[:email]
+      @greeting.cc_state = params[:cc_state]
       @greeting.user_id = current_user.id
+      @greeting.keywordgroup_id = params[:group_id]
+      
       if @greeting.save
         flash[:notice] = "Recipient was successfully created!"
         redirect_back(fallback_location: root_path)
@@ -57,19 +85,7 @@ class AdminsController < ApplicationController
         redirect_back(fallback_location: root_path)
       end
     end
-
-    if params[:action_info] == 'keyword'
-      @keyword = Keyword.new(admin_params)
-      @keyword.keywordgroup_id = @keywordgroup.id
-      @keyword.user_id = current_user.id
-      if @keyword.save
-        flash[:notice] = "Keyword was successfully created!"
-        redirect_back(fallback_location: root_path)
-      else
-        flash[:error] = "Failed creating keyword."
-        redirect_back(fallback_location: root_path)
-      end      
-    end
+    
     # @admin = Admin.new(admin_params)
 
     # respond_to do |format|
