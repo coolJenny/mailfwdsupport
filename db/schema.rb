@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302223116) do
+ActiveRecord::Schema.define(version: 20180303002833) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -24,7 +24,9 @@ ActiveRecord::Schema.define(version: 20180302223116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "keywordgroup_id"
+    t.integer "user_id"
     t.index ["keywordgroup_id"], name: "index_greetings_on_keywordgroup_id"
+    t.index ["user_id"], name: "index_greetings_on_user_id"
   end
 
   create_table "homes", force: :cascade do |t|
@@ -52,7 +54,9 @@ ActiveRecord::Schema.define(version: 20180302223116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "keywordgroup_id"
+    t.integer "user_id"
     t.index ["keywordgroup_id"], name: "index_keywords_on_keywordgroup_id"
+    t.index ["user_id"], name: "index_keywords_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

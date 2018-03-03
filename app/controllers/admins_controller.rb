@@ -5,30 +5,22 @@ class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
   def main_admin
-    @keywords = Keyword.where('user_id' => current_user.id)
-    @num_recipients = Greeting.where('user_id' => current_user.id).count
+    @keywordgroup = Keywordgroup.where(user_id: current_user.id)
   end
 
   def edit_admin
-    @keywordgroups = Keywordgroup.where('user_id' => current_user.id)
-    @keywords = Keyword.where('user_id' => current_user.id)
+    @keywordgroup = Keywordgroup.create!(user_id: current_user.id)
+    @keywords = Keyword.where(keywordgroup_id: @keywordgroup.id).where(user_id: current_user.id)
     @keywords_num = @keywords.count
-    @greetings = Greeting.where('user_id' => current_user.id)
+    @greetings = Greeting.where(keywordgroup_id: @keywordgroup.id).where(user_id: current_user.id)
     @admin = Admin.new
-  end
-
-  def recipients
-    
-  end
-
-  def edit_keywordgroup
-    
   end
 
   # GET /admins
   # GET /admins.json
   def index
     @admins = Admin.all
+    # @keywordgroup = Keywordgroup.where(user_id: current_user.id)
   end
 
   # GET /admins/1
@@ -40,6 +32,10 @@ class AdminsController < ApplicationController
   # GET /admins/new
   def new
     @admin = Admin.new
+    # @keywordgroup = Keywordgroup.create!(user_id: current_user.id)
+    # @keywords = Keyword.where(keywordgroup_id: @keywordgroup.id).where(user_id: current_user.id)
+    # @keywords_num = @keywords.count
+    # @greetings = Greeting.where(keywordgroup_id: @keywordgroup.id).where(user_id: current_user.id)
   end
 
   # GET /admins/1/edit
@@ -50,17 +46,10 @@ class AdminsController < ApplicationController
   # POST /admins.json
   def create
     if params[:action_info] == 'recipient'
-      @greeting             = Greeting.new(admin_params)
-      @greeting.name        = params[:name]
-      @greeting.email       = params[:email]
-      @greeting.cc_state    = params[:cc_state]
-      @greeting.user_id     = current_user.id
+      @greeting = Greeting.new(admin_params)
+      @greeting.keywordgroup_id = @keywordgroup.id
+      @greeting.user_id = current_user.id
       if @greeting.save
-        @keywordgroup = @greeting.keywordgroup.create!(user_id: current_user.id )
-        
-        # keywordgroup = Keywordgroup.find_or_create_by(greeting_id: @greeting.id)
-        # @greeting.keywordgroups << keywordgroup
-
         flash[:notice] = "Recipient was successfully created!"
         redirect_back(fallback_location: root_path)
       else
@@ -71,24 +60,15 @@ class AdminsController < ApplicationController
 
     if params[:action_info] == 'keyword'
       @keyword = Keyword.new(admin_params)
-      @keywordgroup.keywords << @keyword
-      key_count = Keyword.where('user_id' => current_user.id).where('keywordgroup_id' => keywordgroup_id).count
-      if key_count == 4
-        flash[:error] = "Can't create a new keyword. Limited the number of keywords."
+      @keyword.keywordgroup_id = @keywordgroup.id
+      @keyword.user_id = current_user.id
+      if @keyword.save
+        flash[:notice] = "Keyword was successfully created!"
         redirect_back(fallback_location: root_path)
       else
-        @keyword.user_id = current_user.id
-
-        if @keyword.save
-          keywordgroup = Keywordgroup.find_or_create_by(keyword_id: @keyword.id)
-          @keyword.keywordgroups << keywordgroup
-          flash[:notice] = "Keyword was successfully created!"
-          redirect_back(fallback_location: root_path)
-        else
-          flash[:error] = "Failed creating keyword."
-          redirect_back(fallback_location: root_path)
-        end
-      end
+        flash[:error] = "Failed creating keyword."
+        redirect_back(fallback_location: root_path)
+      end      
     end
     # @admin = Admin.new(admin_params)
 

@@ -2,7 +2,7 @@
 	<div class="row">
 		<%= render('/admins/header') %>
 		<div class="head col-md-12" style="margin-top: 30px;">
-			<div class="col-md-6"><a href="/dashboard/edit" class="btn btn-primary">Add New Keyword Group</a></div>
+			<div class="col-md-6"><a href="dashboard/edit" class="btn btn-primary">Add New Keyword Group</a></div>
 		</div>
 		<div class="body table-responsive col-md-12" style="margin-top: 30px;">
 			<table class="table table-hover table-striped table-responsive" id="mydatatable">
@@ -16,19 +16,26 @@
 						<th>Recipients</th>
 						<th class="deleterow no-sort" style="width: 60px;"></th>
 						<th class="deleterow no-sort" style="width: 60px;"></th>
-					</tr>					
+					</tr>
 				</thead>
 				<tbody>
-					<% @keywords.each_with_index do |keyword, index| %>
+					<% @keywordgroup.each_with_index do |keywordgroup, index| %>
 					<tr>
 						<td><%= index+1 %></td>
-						<td><%= keyword.keyword1 %></td>
-						<td><%= keyword.keyword2 %></td>
-						<td><%= keyword.keyword3 %></td>
-						<td><%= keyword.keyword4 %></td>
+						<% @keywords = Keyword.where(keywordgroup_id: keywordgroup.id) %>
+						<% @num_recipients = Greeting.where(keywordgroup_id: keywordgroup.id) %>
+						<% @keywords.each do |keyword| %>
+							<td>
+								<% if keyword.nil? or keyword.empty? %>
+									'asd'
+								<% else %>
+									<%= keyword.keyword %>
+								<% end %>
+							</td>
+						<% end %>
 						<td><%= @num_recipients %></td>
-						<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
-						<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+						<td class="deleterow edit"><%= link_to 'Edit', edit_admin_path(keywordgroup) %></td>
+						<td class="deleterow delete"><a href="">Delete</a></td>
 					</tr>
 					<% end %>
 				</tbody>

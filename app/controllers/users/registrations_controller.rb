@@ -65,7 +65,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def after_sign_up_path_for(resource)
       # @user = current_user
       # @message = "Successfully registered to mailfwdsupport.com!"
-      # UserMailer.welcome_email(@user, @message).deliver_now
+      # UserMailer.welcome_email(@user, @message).deliver_now      
       dashboard_path
     end
 end

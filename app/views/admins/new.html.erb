@@ -1,5 +1,104 @@
-<h1>New Admin</h1>
-
-<%= render 'form', admin: @admin %>
-
-<%= link_to 'Back', admins_path %>
+<div class="container admin edit-admin">
+	<div class="row">
+		<%= render('/admins/header') %>
+		<div class="head col-md-12" style="margin-top: 30px;">
+			<div class="col-md-6"><a href="<%= admins_path %>" class="btn btn-primary">Return to Main List</a></div>
+		</div>
+		<div class="body col-md-12" style="margin-top: 30px;">
+			<div class="col-md-8 panel" style="padding: 0; border: 1px solid #CACBCA">
+				<div class="col-md-12 panel-heading" style="border-bottom: 1px solid #CACBCA">
+					<div class="form-inline col-md-6 keywords" style="margin: 10px 0">
+						<label style="padding: 0">Keywords:</label>
+						<% @keywords.each do |keyword|  %>
+							<span class="btn btn-primary keyword-span"><%= keyword.keyword %></span>
+						<% end %>
+					</div>
+					<div class="form-inline col-md-6 add-tag" style="margin: 10px 0;">
+						<%= form_for @admin do |f| %>
+							<%= hidden_field_tag 'action_info' ,'keyword' %>
+							<label class="col-md-3" style="padding: 0">Add/Edit Keyword</label>
+							<input type="text" name="keyword_val" class="form-control keyword_val" autofocus="true" placeholder="type your keyword..." required="true">
+							<%= f.submit 'OK', class: 'btn btn-default add-keyword' %>
+						<% end %>
+					</div>
+				</div>
+				<div class="body table-responsive col-md-12 panel-body">
+					<table class="table table-hover table-striped greeting-table" id="mydatatable">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Greatings</th>
+								<th>Email</th>
+								<th>Inc. CC</th>
+								<th class="text-center" colspan="2">Action</th>
+							</tr>					
+						</thead>
+						<tbody>
+							<tr class="margin"><td></td></tr>
+							<% @greetings.each_with_index do |greeting, index| %>
+								<tr>
+									<td><%= index+1 %></td>
+									<td><%= greeting.name %></td>
+									<td><%= greeting.email %></td>
+									<td><input type="checkbox" name="" <% if !greeting.cc_state.nil? %> checked <% end %> ></td>
+									<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+									<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
+								</tr>
+							<% end %>
+							<tr class="margin"><td></td></tr>
+						</tbody>
+					</table>
+					<span class="btn col-md-12 col-sm-12 col-xs-12 add-recipients" data-toggle="modal" data-target="#myModal">Add Recipients <em>+</em></span>
+					<div id="myModal" class="modal fade" role="dialog" data-backdrop="static">
+						<div class="modal-dialog">
+							<%= form_for @admin do |f| %>
+								<%= hidden_field_tag 'action_info' ,'recipient' %>
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Recipient Information</h4>
+									</div>
+									<div class="modal-body">
+										<div class="form-group">
+											<label>Name</label><em>*</em>
+											<input type="text" name="name" class="form-control name" autofocus="true", required="true">
+											
+										</div>
+										<div class="form-group">
+											<label>Email</label><em>*</em>
+											<input type="email" name="email" class="form-control email", required="true">
+											
+										</div>
+										<div class="form-inline">
+											<input type="checkbox" name="cc_state" class="cc_state"> &nbsp;									
+											<label>Inc. CC</label>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<%= f.submit 'Save', class: 'btn btn-default create-recipient' %>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 text-center clickable" style="background-color: #ECEDEC"><span class=""><i class="glyphicon glyphicon-chevron-up"></i></span></div>
+			</div>
+			<div class="col-md-4">
+				<nav class="sidebar" data-sidebar-anyclick-close="">
+					<div class="col-md-12" style="border: 1px solid #CBCCCB; padding: 10px">
+						<p class="text-center"><input type="checkbox" name=""> Add Link to body</p>
+						<div class="form-group" style="padding-top: 5px;">Text to add: <input type="text" name="" class="form-control" placeholder="Click here to review process"></div>
+						<div class="form-group">Link: <input type="text" name="" class="form-control" placeholder="https://www.sebis.com/cas/login"></div>
+					</div>
+					<div class="col-md-12" style="border: 1px solid #CBCCCB; margin-top: 50px; padding: 10px;">
+						<p>Any matching text will be deleted from fowarded email</p>
+						<div class="form-group" style="padding-top: 5px;">1. <input type="text" name="" class="form-control" placeholder="sebis"></div>
+						<div class="form-group">2. <input type="text" name="" class="form-control" placeholder="www.sebis.com"></div>
+						<a href="#" class="btn add add-btn">Add+</a>
+					</div>
+				</nav>				
+			</div>
+		</div>
+	</div>
+</div>
