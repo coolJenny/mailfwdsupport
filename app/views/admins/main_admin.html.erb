@@ -26,15 +26,13 @@
 						<% @num_recipients = Greeting.where(keywordgroup_id: keywordgroup.id) %>
 						<% @keywords.each do |keyword| %>
 							<td>
-								<% if keyword.nil? or keyword.empty? %>
-									'asd'
-								<% else %>
+								
 									<%= keyword.keyword %>
-								<% end %>
+								
 							</td>
 						<% end %>
 						<td><%= @num_recipients %></td>
-						<td class="deleterow edit"><%= link_to 'Edit', edit_admin_path(keywordgroup) %></td>
+						<td class="deleterow edit"><a href="/dashboard/edit/<%= keywordgroup.id %>">Edit</a></td>
 						<td class="deleterow delete"><a href="">Delete</a></td>
 					</tr>
 					<% end %>

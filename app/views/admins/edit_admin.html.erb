@@ -45,7 +45,7 @@
 										<td><%= greeting.name %></td>
 										<td><%= greeting.email %></td>
 										<td><input type="checkbox" name="" <% if !greeting.cc_state.nil? %> checked <% end %> ></td>
-										<td class="deleterow edit"><a href="/dashboard/edit">Edit</a></td>
+										<td class="deleterow edit"><a href="/dashboard/edit/<%= greeting.id %>">Edit</a></td>
 										<td class="deleterow delete"><a href="#" data-confirm="Are you sure you want to delete?">Delete</a></td>
 									</tr>
 								<% end %>

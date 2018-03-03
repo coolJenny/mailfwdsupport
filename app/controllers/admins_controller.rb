@@ -9,7 +9,7 @@ class AdminsController < ApplicationController
   end
 
   def edit_admin
-
+    
     @keywordgroup = Keywordgroup.create!(user_id: current_user.id)
     @group_id = @keywordgroup.id
 
@@ -17,35 +17,9 @@ class AdminsController < ApplicationController
     @keywords_num = @keywords.count
     @greetings = Greeting.where(user_id: current_user.id).where(keywordgroup_id: @keywordgroup.id)
     
-    
+
     @admin = Admin.new
 
-  end
-
-  # GET /admins
-  # GET /admins.json
-  def index
-    @admins = Admin.all
-    # @keywordgroup = Keywordgroup.where(user_id: current_user.id)
-  end
-
-  # GET /admins/1
-  # GET /admins/1.json
-  def show
-    @admin_keywords = Admin.where('user_id' => current_user.id)
-  end
-
-  # GET /admins/new
-  def new
-    @admin = Admin.new
-    # @keywordgroup = Keywordgroup.create!(user_id: current_user.id)
-    # @keywords = Keyword.where(keywordgroup_id: @keywordgroup.id).where(user_id: current_user.id)
-    # @keywords_num = @keywords.count
-    # @greetings = Greeting.where(keywordgroup_id: @keywordgroup.id).where(user_id: current_user.id)
-  end
-
-  # GET /admins/1/edit
-  def edit
   end
 
   # POST /admins
@@ -95,6 +69,27 @@ class AdminsController < ApplicationController
     #   end
     # end
   end
+
+  # GET /admins
+  # GET /admins.json
+  def index
+    @admins = Admin.all
+  end
+
+  # GET /admins/1
+  # GET /admins/1.json
+  def show
+    @admin_keywords = Admin.where('user_id' => current_user.id)
+  end
+
+  # GET /admins/new
+  def new
+    @admin = Admin.new
+  end
+
+  # GET /admins/1/edit
+  def edit
+  end  
 
   # PATCH/PUT /admins/1
   # PATCH/PUT /admins/1.json
