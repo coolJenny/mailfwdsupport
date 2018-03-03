@@ -13,16 +13,13 @@ class AdminsController < ApplicationController
     @keywordgroup = Keywordgroup.create!(user_id: current_user.id)
     @group_id = @keywordgroup.id
 
-    if @keywordgroups = Keywordgroup.where(user_id: current_user.id)
-      @keywordgroups.each do |keywordgroup|
-        @keywords = Keyword.where(keywordgroup_id: keywordgroup.id).where(user_id: current_user.id)
-        @keywords_num = @keywords.count
-        @greetings = Greeting.where(keywordgroup_id: keywordgroup.id).where(user_id: current_user.id)
-      end     
-    end
+    @keywords = Keyword.where(user_id: current_user.id).where(keywordgroup_id: @keywordgroup.id)
+    @keywords_num = @keywords.count
+    @greetings = Greeting.where(user_id: current_user.id).where(keywordgroup_id: @keywordgroup.id)
+    
     
     @admin = Admin.new
-    
+
   end
 
   # GET /admins
